@@ -2,6 +2,17 @@
 
 This repository documents a security analysis project focused on **phishing detection**. The workflow systematically compares a malicious email against a legitimate baseline, using an 8-step process to confirm the attack. The findings highlight critical failures in technical authentication and expose classic social engineering tactics.
 
+Tasks List 
+
+1.Obtain a sample phishing email (many free samples online).
+2.Examine sender's email address for spoofing.
+3.Check email headers for discrepancies (using online header analyzer).
+4.Identify suspicious links or attachments.
+5.Look for urgent or threatening language in the email body.
+6.Note any mismatched URLs (hover to see real link).
+7.Verify presence of spelling or grammar errors.
+8.Summarize phishing traits found in the email.
+
 ---
 
 ### 1. Key Findings Summary
