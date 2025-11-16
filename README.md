@@ -1,8 +1,3 @@
-# Phishing Email Security Assessment Report
-
-This report documents the analysis of a sample phishing email, detailing the technical and social engineering weaknesses identified by following an 8-step security investigation workflow.
-
----
 #  Phishing Email Security Assessment Report
 
 This repository documents a security analysis project focused on **phishing detection**. The workflow systematically compares a malicious email against a legitimate baseline, using an 8-step process to confirm the attack. The findings highlight critical failures in technical authentication and expose classic social engineering tactics.
