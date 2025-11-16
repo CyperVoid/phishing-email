@@ -3,6 +3,11 @@
 This report documents the analysis of a sample phishing email, detailing the technical and social engineering weaknesses identified by following an 8-step security investigation workflow.
 
 ---
+#  Phishing Email Security Assessment Report
+
+This repository documents a security analysis project focused on **phishing detection**. The workflow systematically compares a malicious email against a legitimate baseline, using an 8-step process to confirm the attack. The findings highlight critical failures in technical authentication and expose classic social engineering tactics.
+
+---
 
 ### 1. Key Findings Summary
 
@@ -16,8 +21,7 @@ The email is **conclusively malicious** based on a complete failure of email aut
 | **Social Engineering** | Uses high-pressure language and poor grammar/spelling. | **Confirmed** |
 
 ---
-
-### 2. Technical Evidence & Analysis (Tasks 2, 3, 4)
+### 3. Technical Evidence & Analysis (Tasks 2, 3, 4)
 
 The analysis of the email header provides the technical proof of fraud:
 
@@ -28,9 +32,20 @@ The analysis of the email header provides the technical proof of fraud:
 * **Infrastructure & Blacklisting (Task 3):** The email originated from a low-reputation, disposable **Virtual Private Server (VPS)** whose IP address was found on public blacklists, identifying it as a known source of malicious traffic.
 * **Spoofing (Task 2):** The visible sender's display name mimicked the legitimate company, but the underlying `Return-Path` address belonged to an unrelated, untrusted third-party domain.
 
+### 3. Authentication Results Comparison (Technical Proof)
+
+The table below summarizes the technical verification of the email's legitimacy based on header analysis (Task 3). This highlights the fundamental difference between trusted and malicious infrastructure.
+
+| Security Feature | Legitimate Email | Phishing Email | Implication |
+| :--- | :--- | :--- | :--- |
+| **Sender Server** | High-reputation (e.g., Amazon SES) | Unknown, disposable **VPS** | Phisher uses throwaway infrastructure. |
+| **SPF** (Sender Authorization) | **PASS** | **FAIL** / Missing | Sender is unauthorized to use the domain. |
+| **DKIM** (Content Integrity) | **PASS** | **NONE** / Invalid | Content cannot be verified as authentic. |
+| **Blacklist Status** | Clean / Trusted | **Actively Blacklisted** | Sender IP is a known source of spam/malware. |
+| **Conclusion** | **TRUSTED** | **MALICIOUS** | Confirmed security threat. |
 ---
 
-### 3. Social Engineering & Attack Vector (Tasks 5, 6, 7)
+### 4. Social Engineering & Attack Vector (Tasks 5, 6, 7)
 
 The content analysis confirms the attack relies on manipulation to succeed:
 
@@ -40,6 +55,6 @@ The content analysis confirms the attack relies on manipulation to succeed:
 
 ---
 
-### 4. Summary of Workflow Completion (Task 1 & 8)
+### 5. Summary of Workflow Completion (Task 1 & 8)
 
 The analysis successfully completed the 8-step workflow, moving from sample acquisition (Task 1) through technical verification and social engineering analysis, culminating in this conclusive summary (Task 8).
