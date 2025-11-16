@@ -1,0 +1,45 @@
+# Phishing Email Security Assessment Report
+
+This report documents the analysis of a sample phishing email, detailing the technical and social engineering weaknesses identified by following an 8-step security investigation workflow.
+
+---
+
+### 1. Key Findings Summary
+
+The email is **conclusively malicious** based on a complete failure of email authentication protocols and the use of classic social engineering tactics designed for credential theft.
+
+| Threat Category | Finding | Status |
+| :--- | :--- | :--- |
+| **Authentication** | SPF, DKIM, and DMARC checks **FAIL**. | **Critical** |
+| **Infrastructure** | Sender IP is **Actively Blacklisted** (Known Spam/Botnet source). | **High Risk** |
+| **Call-to-Action** | Link redirects to a **Mismatched, Fraudulent URL**. | **High Risk** |
+| **Social Engineering** | Uses high-pressure language and poor grammar/spelling. | **Confirmed** |
+
+---
+
+### 2. Technical Evidence & Analysis (Tasks 2, 3, 4)
+
+The analysis of the email header provides the technical proof of fraud:
+
+* **Authentication Failure (Task 3):** The sending domain fails all three primary security protocols, confirming the message is unauthorized:
+    * **SPF (Sender Policy Framework):** The sending server's IP was unauthorized by the legitimate domain's security record.
+    * **DKIM (DomainKeys Identified Mail):** The cryptographic signature was invalid or missing.
+    * **DMARC (Policy):** The email failed the domain's configured authentication policy check.
+* **Infrastructure & Blacklisting (Task 3):** The email originated from a low-reputation, disposable **Virtual Private Server (VPS)** whose IP address was found on public blacklists, identifying it as a known source of malicious traffic.
+* **Spoofing (Task 2):** The visible sender's display name mimicked the legitimate company, but the underlying `Return-Path` address belonged to an unrelated, untrusted third-party domain.
+
+---
+
+### 3. Social Engineering & Attack Vector (Tasks 5, 6, 7)
+
+The content analysis confirms the attack relies on manipulation to succeed:
+
+* **Mismatched URL (Task 6):** The core attack vector is a fraudulent link. The visible text claims to link to the official website, but inspection shows the actual destination is a **credential harvesting site** on a non-affiliated domain.
+* **Urgency & Threat (Task 5):** The body uses coercive phrases ("Immediate Action Required," "Account Will Be Suspended") to evoke **panic**. This tactic bypasses the user's critical thinking, forcing a fast click.
+* **Quality Indicators (Task 7):** The presence of **spelling errors, awkward phrasing, and inconsistent formatting** confirms the lack of professional quality control typically seen in legitimate corporate communications.
+
+---
+
+### 4. Summary of Workflow Completion (Task 1 & 8)
+
+The analysis successfully completed the 8-step workflow, moving from sample acquisition (Task 1) through technical verification and social engineering analysis, culminating in this conclusive summary (Task 8).
